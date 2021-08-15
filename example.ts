@@ -1,4 +1,4 @@
-import { request } from "./mod.ts";
+import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
 
 const { data: repos } = await request("GET /users/{username}/repos", {
   username: "octocat"

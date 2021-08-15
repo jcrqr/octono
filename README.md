@@ -4,10 +4,16 @@
 
 :construction: Under active development.
 
+## Installation
+
+```typescript
+import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
+```
+
 ## Usage
 
 ```typescript
-import { request } from "./mod.ts";
+import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
 
 const { data: repos } = await request("GET /orgs/{org}/repos", {
   org: "octocat"
