@@ -1,9 +1,16 @@
-import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
+import { Octono } from "./mod.ts";
 
-const { data: repos } = await request("GET /users/{username}/repos", {
-  username: "octocat"
-})
+const start = Date.now();
+const octono = new Octono();
+
+const resp = await octono.request("GET /users/{username}/repos", {
+  username: "octocat",
+});
+
+const repos = await resp.json();
 
 for (const repo of repos) {
-  console.log(`Found repo: ${repo.full_name} (${repo.stargazers_count} stars)`)
+  console.log(`Found repo: ${repo.full_name} (${repo.stargazers_count} stars)`);
 }
+
+console.log(`Time elapsed: ${Date.now() - start}ms`);

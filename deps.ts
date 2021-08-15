@@ -1,5 +1,5 @@
 // gen
 export type {
-  operations as Operations,
-  paths as Endpoints,
+  operations as GHOperations,
+  paths as GHEndpoints,
 } from "./gen/openapi.d.ts";
