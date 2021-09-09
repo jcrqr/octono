@@ -2,25 +2,27 @@
 
 > GitHub REST API for Deno projects.
 
-:construction: Under active development.
+:construction: Under active development. **DO NOT** use in production.
 
 ## Installation
 
 ```typescript
-import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
+import { Octono } from "https://deno.land/x/octono@v0.0.1/mod.ts";
 ```
 
 ## Usage
 
 ```typescript
-import { request } from "https://deno.land/x/octono@v0.0.1/mod.ts";
+import { request } from "https://deno.land/x/octono@v0.0.3/mod.ts";
 
-const { data: repos } = await request("GET /orgs/{org}/repos", {
-  org: "octocat"
+const resp = await Octono.request("GET /users/{username}/repos", {
+  username: "octocat"
 })
 
+const repos = await resp.json();
+
 for (const repo of repos) {
-  console.log(`Found repo: ${repo.full_name}`)
+  console.log(`Found repo: ${repo.full_name} (${repo.stargazers_count} stars)`);
 }
 ```
 
