@@ -3,7 +3,7 @@ import { Octono } from "./mod.ts";
 const start = Date.now();
 const octono = new Octono();
 
-const resp = await octono.request("GET /users/{username}/repos", {
+const resp = await octono.paginated("GET /users/{username}/repos", {
   username: "octocat",
 });
 
