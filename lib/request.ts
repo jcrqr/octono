@@ -54,7 +54,7 @@ export class OctonoRequest extends Request {
     E extends keyof Endpoints,
     P extends OctonoRequestInit = E extends keyof Endpoints
       ? Endpoints[E]["parameters"] & OctonoRequestInit
-      : OctonoRequestInit
+      : OctonoRequestInit,
   >(endpoint: E, params?: P): OctonoRequest {
     const baseURL = params?.baseURL ? params.baseURL : GITHUB_URL;
 
@@ -76,6 +76,10 @@ export class OctonoRequest extends Request {
         "user-agent": "octono",
       },
     };
+
+    if (method !== Method.GET) {
+      init.body = JSON.stringify(params || {});
+    }
 
     return new OctonoRequest(url.toString(), init);
   }
