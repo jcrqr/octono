@@ -70,6 +70,7 @@ export class OctonoRequest extends Request {
 
     const init: OctonoRequestInit = {
       ...(params || {}),
+      method,
       headers: {
         ...(params?.headers || {}),
         "user-agent": "octono",
